@@ -1,0 +1,29 @@
+
+&i2c0 {
+    tempsensor: mysensor@5a {
+        compatible = "i2c-device";
+        reg = <0x5a>;
+        label = "temp sensor";
+    };
+};
+
+&i2c1 {
+    lidarsensor: lidarsensor@10 {
+        compatible = "i2c-device";
+        reg = <0x10>;
+        label = "lidar sensor";
+    };
+};
+
+/{
+
+    buzzer:zephyr,user {
+        gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+    };
+	aliases {
+		buzz = &buzzer;
+    };
+};
+&i2c1 {
+    status = "okay";
+};
